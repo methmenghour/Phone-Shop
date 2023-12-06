@@ -17,8 +17,5 @@ public class Brand {
 	@Column(name="brand_id")
 	private Integer id;
 	@Column(name="brand_name")
-	private String name;
-	
-	//private int version;
-	
+	private String name;	
 }

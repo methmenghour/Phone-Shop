@@ -1,8 +1,8 @@
 package com.menghour.java.school.phoneshopnight.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,25 +44,22 @@ public class BrandController {
 		return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(updatedBrand));
 
 	}
-	@GetMapping 
-	public ResponseEntity<?> getBrands(){
-		List<BrandDTO> list = brandService.getBrands()
+//	@GetMapping("filter")
+//	public ResponseEntity<?> getBrands(@RequestParam("name") String name){	
+//		List<BrandDTO> list = brandService.getBrands(name)
+//			.stream()
+//			.map(brand -> BrandMapper.INSTANCE.toBrandDTO(brand))
+//			.collect(Collectors.toList());	
+//		return ResponseEntity.ok(list);
+//	}
+//	
+	@GetMapping
+	public ResponseEntity<?> getBrands(@RequestParam Map<String, String> params){
+		List<BrandDTO> list = brandService.getBrands(params)
 				.stream()
 				.map(brand -> BrandMapper.INSTANCE.toBrandDTO(brand))
-				.collect(Collectors.toList());
-		//return ResponseEntity.ok(brandService.getBrands());
-		return ResponseEntity.ok(list);
-		
-	}
-	@GetMapping("filter")
-	public ResponseEntity<?> getBrands(@RequestParam("name") String name){	
-		List<BrandDTO> list = brandService.getBrands(name)
-			.stream()
-			.map(brand -> BrandMapper.INSTANCE.toBrandDTO(brand))
-			.collect(Collectors.toList());
-		
-		
-		return ResponseEntity.ok(list);
+				.collect(Collectors.toList());	
+			return ResponseEntity.ok(list);
 	}
 	
 

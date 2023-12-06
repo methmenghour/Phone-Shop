@@ -9,7 +9,6 @@ import com.menghour.java.school.phoneshopnight.entity.Brand;
 
 @Mapper
 public interface BrandMapper {
-	//@Mapping(target = "version",source = "vs")
 	BrandMapper INSTANCE = Mappers.getMapper(BrandMapper.class);
 	Brand toBrand(BrandDTO dto);
 	BrandDTO toBrandDTO(Brand entity);
