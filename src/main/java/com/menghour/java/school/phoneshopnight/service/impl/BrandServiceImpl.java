@@ -67,7 +67,6 @@ public class BrandServiceImpl implements BrandService {
 			String id = params.get("id");
 			brandFilter.setId(Integer.parseInt(id));
 		}
-		// @TODO add to a function for pageable
 		int pageLimit = PageUtil.DEFAULT_PAGE_LIMIT;
 		if(params.containsKey(PageUtil.PAGE_LIMIT)) {
 			pageLimit = Integer.parseInt(params.get(PageUtil.PAGE_LIMIT));

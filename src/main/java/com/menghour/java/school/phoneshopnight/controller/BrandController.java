@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.menghour.java.school.phoneshopnight.dto.BrandDTO;
+import com.menghour.java.school.phoneshopnight.dto.PageDTO;
 import com.menghour.java.school.phoneshopnight.entity.Brand;
 import com.menghour.java.school.phoneshopnight.mapper.BrandMapper;
 import com.menghour.java.school.phoneshopnight.service.BrandService;
@@ -48,13 +49,16 @@ public class BrandController {
 
 	@GetMapping
 	public ResponseEntity<?> getBrands(@RequestParam Map<String, String> params){
-		Page<Brand> brands = brandService.getBrands(params);
 //		List<BrandDTO> list = brandService
 //				.getBrands(params)
 //				.stream()
 //				.map(brand -> BrandMapper.INSTANCE.toBrandDTO(brand))
-//				.collect(Collectors.toList());	
-			return ResponseEntity.ok(brands);
+//				.collect(Collectors.toList());
+		
+		Page<Brand> page = brandService.getBrands(params);
+		PageDTO pageDTO = new PageDTO(page);
+
+			return ResponseEntity.ok(pageDTO);
 	}
 	
 
