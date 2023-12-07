@@ -53,7 +53,7 @@ public class BrandController {
 //				.getBrands(params)
 //				.stream()
 //				.map(brand -> BrandMapper.INSTANCE.toBrandDTO(brand))
-//				.collect(Collectors.toList());
+//					.collect(Collectors.toList());
 		
 		Page<Brand> page = brandService.getBrands(params);
 		PageDTO pageDTO = new PageDTO(page);
