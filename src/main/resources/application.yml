@@ -1,47 +1,14 @@
-#spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/phoneshop_night 
-#    username: phoneshop_night 
-#    password: phoneshop123
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
-
 spring:
   datasource:
-   url: jdbc:h2:~/test
-   username: sa
-   password: 
+    url: jdbc:postgresql://localhost:5432/phoneshop_night 
+    username: phoneshop_night 
+    password: phoneshop123
   jpa:
-   properties:
     hibernate:
-    dialect: org.hibernate.dialect.H2Dialect
-   hibernate:
-    ddl-auto: create
-  h2:
-    console:      
-      enabled: true
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
       
       
-# http://localhost:8080/h2-console (Run Browser ) 
-# Accessing the H2 Console
-#H2 database has an embedded GUI console for 
-#browsing the contents of a database and running SQL queries.
-# By default, the H2 console is not enabled in Spring.
-#
-#To enable it, we need to add the following property to application.properties:
-#
-#spring.h2.console.enabled=true
-#
-#If we’re using YAML configuration, we need to add the property to application.yaml:
-#
-#spring:
-#  h2:
-#    console.enabled: true
-#
-#Then, after starting the application,
-# we can navigate to http://localhost:8080/h2-console, 
-# which will present us with a login page.
