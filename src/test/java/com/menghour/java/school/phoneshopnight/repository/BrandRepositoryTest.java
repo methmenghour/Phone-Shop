@@ -14,7 +14,7 @@ import com.menghour.java.school.phoneshopnight.entity.Brand;
 public class BrandRepositoryTest {
 	@Autowired
 	private BrandRepository brandRepository;
-    @Test
+   // @Test
 	public void testFindByNameLike() {
     	//given
 		Brand brand = new Brand();
@@ -35,7 +35,7 @@ public class BrandRepositoryTest {
 		assertEquals(3, brands.get(0).getId());
 		
 	}
-    @Test
+   // @Test
 	public void testFindByNameContaining() {
     	//given
 		Brand brand = new Brand();

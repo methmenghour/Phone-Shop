@@ -12,6 +12,10 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
+  liquibase:
+        change-log: classpath:db/changelog/db.changelog-master.yaml
+        enabled: false
 
+ 
       
       
