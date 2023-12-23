@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.menghour.java.school.phoneshopnight.entity.Model;
+import com.menghour.java.school.phoneshopnight.exception.ResourceNotFoundException;
 import com.menghour.java.school.phoneshopnight.repository.ModelRepository;
 import com.menghour.java.school.phoneshopnight.service.ModelService;
 
@@ -20,8 +21,14 @@ public class ModelServiceImpl implements ModelService {
 	}
 
 	@Override
-	public List<Model> getByBrand(Integer brandId) {
+	public List<Model> getByBrand(Long brandId) {
 		return modelRepository.findByBrandId(brandId);
+	}
+
+	@Override
+	public Model getById(Long id) {
+		return modelRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Model", id));
 	}
 
 }
