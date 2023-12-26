@@ -1,12 +1,16 @@
 package com.menghour.java.school.phoneshopnight.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.menghour.java.school.phoneshopnight.dto.ProductDTO;
+import com.menghour.java.school.phoneshopnight.dto.ProductImportDTO;
 import com.menghour.java.school.phoneshopnight.entity.Product;
 import com.menghour.java.school.phoneshopnight.mapper.ProductMapper;
 import com.menghour.java.school.phoneshopnight.service.ProductService;
@@ -26,5 +30,11 @@ public class ProductController {
 		product = productService.create(product);
 		
 		return ResponseEntity.ok(product);
+	}
+	
+	@PostMapping("importProduct")
+	public ResponseEntity<?> importProduct(@RequestBody @Valid ProductImportDTO importDTO){
+		productService.importProduct(importDTO);
+		return ResponseEntity.ok().build();
 	}
 }
