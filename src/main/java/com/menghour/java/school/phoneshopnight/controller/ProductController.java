@@ -3,12 +3,14 @@ package com.menghour.java.school.phoneshopnight.controller;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.menghour.java.school.phoneshopnight.dto.PriceDTO;
 import com.menghour.java.school.phoneshopnight.dto.ProductDTO;
 import com.menghour.java.school.phoneshopnight.dto.ProductImportDTO;
 import com.menghour.java.school.phoneshopnight.entity.Product;
@@ -19,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("product")
+@RequestMapping("products")
 public class ProductController {
 	private final ProductService productService;
 	private final ProductMapper productMapper;
@@ -35,6 +37,12 @@ public class ProductController {
 	@PostMapping("importProduct")
 	public ResponseEntity<?> importProduct(@RequestBody @Valid ProductImportDTO importDTO){
 		productService.importProduct(importDTO);
+		return ResponseEntity.ok().build();
+	}
+	
+	@PostMapping("{productId}/setSalePrice")
+	public ResponseEntity<?> setSalePrice(@PathVariable("productId") Long productId,@RequestBody PriceDTO priceDTO){
+		productService.setSalePrice(productId, priceDTO.getPrice());
 		return ResponseEntity.ok().build();
 	}
 }
