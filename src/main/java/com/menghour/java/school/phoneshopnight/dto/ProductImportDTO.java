@@ -1,11 +1,13 @@
 package com.menghour.java.school.phoneshopnight.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -21,7 +23,8 @@ public class ProductImportDTO {
 	private BigDecimal importPrice;
 	
 	@NotNull(message = "Import date can't be null")
-	private LocalDate importDate;
+	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime importDate;
 
 
 }
