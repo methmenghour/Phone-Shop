@@ -82,9 +82,40 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.0</version>
 		</dependency>
+		<dependency>
+	        <groupId>org.hibernate</groupId>
+	        <artifactId>hibernate-jpamodelgen</artifactId>
+	        <version>5.4.3.Final</version>
+    	</dependency>
 	</dependencies>
 	<build>
 		<plugins>
+			<plugin>
+	            <groupId>org.bsc.maven</groupId>
+	            <artifactId>maven-processor-plugin</artifactId>
+	            <version>3.1.0</version>
+	            <executions>
+	                <execution>
+	                    <id>process</id>
+	                    <goals>
+	                        <goal>process</goal>
+	                    </goals>
+	                    <phase>generate-sources</phase>
+	                    <configuration>
+	                        <processors>
+	                            <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+	                        </processors>
+	                    </configuration>
+	                </execution>
+	            </executions>
+	            <dependencies>
+	                <dependency>
+	                    <groupId>org.hibernate</groupId>
+	                    <artifactId>hibernate-jpamodelgen</artifactId>
+	                    <version>5.4.3.Final</version>
+	                </dependency>
+	            </dependencies>
+            </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

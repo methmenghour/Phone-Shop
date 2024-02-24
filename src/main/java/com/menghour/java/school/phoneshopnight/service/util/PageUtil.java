@@ -7,7 +7,7 @@ public interface PageUtil {
 	String PAGE_LIMIT = "_limit";
 	String PAGE_NUMBER = "_page";
 
-	static org.springframework.data.domain.Pageable getPageable(int pageNumber, int pageSize) {
+	static Pageable getPageable(int pageNumber, int pageSize) {
 		if (pageNumber < DEFAULT_PAGE_NUMBER) {
 			pageNumber = DEFAULT_PAGE_NUMBER;
 		}
