@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.menghour.java.school.phoneshopnight.dto.ProductReportDTO;
+import com.menghour.java.school.phoneshopnight.dto.report.ExpenseReportDTO;
 import com.menghour.java.school.phoneshopnight.projection.ProductSold;
 import com.menghour.java.school.phoneshopnight.service.ReportService;
 
@@ -37,4 +38,11 @@ public class ReportController {
 		return ResponseEntity.ok(productSolds);
 		
 	}
+	@GetMapping("expense/{startDate}/{endDate}")
+	public ResponseEntity<?> expenseReport(@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("startDate") LocalDate startDate, 
+			@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("endDate") LocalDate endDate) {
+		List<ExpenseReportDTO> expenseReportDTOs = reportService.getExpenseReport(startDate, endDate);
+		return ResponseEntity.ok(expenseReportDTOs);
+	}
+	
 }
